@@ -21,19 +21,27 @@ showAll.addEventListener('click', () => {
     }  
 });
 
-soap.addEventListener('click', () => {  
+
+/* soap.addEventListener('click', () => {  
     while(list.firstChild) {
         list.removeChild(list.firstChild);
-    } 
+    }
     for(let i = 0; i < products.length; i++) {
         const banana = products[i];
         if(banana.category === 'soap') {
             const dom = rendersProducts(banana);
             list.appendChild(dom);    
         }
-        
     }  
-});
+}); */
+
+const soapSuds = soap.querySelectorAll('soap');
+console.log(soapSuds.length);
+
+
+
+
+
 
 bathBomb.addEventListener('click', () => {   
     while(list.firstChild) {
