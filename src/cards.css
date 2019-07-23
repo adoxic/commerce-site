@@ -1,0 +1,18 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cards li {
+    height: 500px;
+    border: solid 4px gray;
+    margin: 7px;
+}
+
+.cards img {
+    width: 300px;
+}
+
+.hidden {
+    visibility: hidden;
+}
