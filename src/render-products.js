@@ -1,4 +1,7 @@
-function rendersProducts(product) {
+import { getProducts } from './register.js';
+import { lineTotes } from './register.js';
+
+export default function rendersProducts(product) {
     const li = document.createElement('li');
     li.className = product.category;
     li.title = product.description;
@@ -28,4 +31,25 @@ function rendersProducts(product) {
     return li;
 }
 
-export default rendersProducts;
+export function rendersCart(cart, objects) {
+    const tr = document.createElement('tr');
+    
+    const prodName = document.createElement('td');
+    prodName.textContent = cart;
+    console.log(cart);
+    tr.appendChild(prodName);
+    
+    const quantity = document.createElement('td');
+    quantity.textContent = cart.quantity;
+    tr.appendChild(quantity);
+    
+    const total = document.createElement('td');
+    let apple = getProducts(objects, cart);
+    console.log(cart);
+    const outValue = lineTotes(apple.price, cart.quantity);
+    total.textContent = outValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    tr.appendChild(total);
+    
+
+    return tr;
+}

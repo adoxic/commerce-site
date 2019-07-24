@@ -1,4 +1,6 @@
 import rendersProducts from '../src/render-products.js';
+import { rendersCart } from '../src/render-products.js';
+import products from '../src/data/products.js';
 
 const test = QUnit.test;
 
@@ -16,6 +18,7 @@ test('renders a product', assert => {
         cost: 0.25,
     };
 
+
     const expected = '<li class="bath bomb" title="Lovely floral sent, pink color"><h3>Rose Cake</h3><img src="assets/bathbomb-pink.jpg" alt="Bath Bomb Pink image"><p class="price">$6.00<button value="Bath Bomb Pink">Add</button></p></li>';
     
     // act
@@ -25,3 +28,21 @@ test('renders a product', assert => {
     // assert
     assert.equal(html, expected);
 });    
+
+test('renders a cart', assert => {
+    // arrange
+    const cart = {
+        code: 'Bath Bomb Pink',
+        quantity: 2,
+    };
+
+
+    const expected = '<tr><td>Bath Bomb Pink</td><td>2</td><td>$12.00</td></tr>';
+    
+    // act
+    const dom = rendersCart(cart, products);
+    const html = dom.outerHTML;
+    
+    // assert
+    assert.deepEqual(html, expected);
+}); 
