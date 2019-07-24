@@ -35,8 +35,7 @@ export function rendersCart(cart, objects) {
     const tr = document.createElement('tr');
     
     const prodName = document.createElement('td');
-    prodName.textContent = cart;
-    console.log(cart);
+    prodName.textContent = cart.code;
     tr.appendChild(prodName);
     
     const quantity = document.createElement('td');
@@ -44,8 +43,8 @@ export function rendersCart(cart, objects) {
     tr.appendChild(quantity);
     
     const total = document.createElement('td');
-    let apple = getProducts(objects, cart);
-    console.log(cart);
+    let apple = getProducts(objects, cart.code);
+ 
     const outValue = lineTotes(apple.price, cart.quantity);
     total.textContent = outValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     tr.appendChild(total);
