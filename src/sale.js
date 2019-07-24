@@ -62,9 +62,9 @@ sets.addEventListener('click', () => {
 });
 
 function newFunction(category) {
-    for (let i = 0; i < products.length; i++) {
+    for(let i = 0; i < products.length; i++) {
         const banana = products[i];
-        if (banana.category === category) {
+        if(banana.category === category) {
             const dom = rendersProducts(banana);
             list.appendChild(dom);
         }
