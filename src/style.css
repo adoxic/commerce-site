@@ -1,3 +1,10 @@
-html {
-    background-color: #FFEEE5;
+
+table {
+    margin: 10px;
+    background-color: #FCD4C7;
+    border: solid 5px #133310;  
+}
+
+td {
+    border: #133310 dashed 3px;
 }
