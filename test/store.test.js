@@ -78,7 +78,7 @@ test('put a thing more than one thing in the shopping cart array', assert => {
 }); 
 
 
-test('put a thing more than one thing in the shopping cart array', assert => {
+test('get an object form the array', assert => {
     
 
     const code = 'Bath Bomb Pink';

@@ -37,18 +37,18 @@ export default function rendersProducts(product) {
 export function rendersCart(cart, objects) {
     const tr = document.createElement('tr');
     
-    const prodName = document.createElement('td');
-    prodName.textContent = cart.code;
-    tr.appendChild(prodName);
+    const productName = document.createElement('td');
+    productName.textContent = cart.code;
+    tr.appendChild(productName);
     
     const quantity = document.createElement('td');
     quantity.textContent = cart.quantity;
     tr.appendChild(quantity);
     
     const total = document.createElement('td');
-    let apple = store.getProducts(objects, cart.code);
+    let objectFromProductArray = store.getProducts(objects, cart.code);
  
-    const outValue = lineTotes(apple.price, cart.quantity);
+    const outValue = lineTotes(objectFromProductArray.price, cart.quantity);
     total.textContent = outValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     tr.appendChild(total);
     

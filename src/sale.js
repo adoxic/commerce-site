@@ -15,8 +15,8 @@ showAll.addEventListener('click', () => {
     }
       
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        const dom = rendersProducts(banana);
+        const objectFromData = localData[i];
+        const dom = rendersProducts(objectFromData);
         list.appendChild(dom);     
         
     }  

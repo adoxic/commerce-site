@@ -6,12 +6,12 @@ import store from './data/store.js';
 const tableLocation = document.getElementById('cart-table');
 const totalLocation = document.getElementById('total');
 
-const thingy = store.pullShoppingCart();
+const shoppingCartItems = store.pullShoppingCart();
 
 function placeDataInTable(cart) {
     for(let i = 0; i < cart.length; i++) {
-        const element = cart[i];
-        const cartTableData = rendersCart(element, products);
+        const cartObject = cart[i];
+        const cartTableData = rendersCart(cartObject, products);
         tableLocation.appendChild(cartTableData);
     }
 }
@@ -22,8 +22,8 @@ function placeTotalInTable(order, products) {
     makeTd.textContent = total.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     totalLocation.appendChild(makeTd);
 }
-placeTotalInTable(thingy, products);
-placeDataInTable(thingy);
+placeTotalInTable(shoppingCartItems, products);
+placeDataInTable(shoppingCartItems);
 
 
 

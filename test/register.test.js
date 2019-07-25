@@ -27,11 +27,11 @@ test('find product', assert => {
 
 test('does math work?', assert => {
     // arrange
-    const a = 1.05;
-    const b = 4;
+    const price = 1.05;
+    const quantity = 4;
     const expected = 4.20;
     // act
-    const foundProduct = lineTotes(a, b);
+    const foundProduct = lineTotes(price, quantity);
     // assert
     assert.equal(foundProduct, expected);
 }); 
