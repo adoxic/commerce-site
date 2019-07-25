@@ -1,10 +1,13 @@
-import order from './order.js';
+import order from './data/order.js';
 import { rendersCart } from './render-products.js';
 import makesTotal from './register.js';
 import products from './data/products.js';
+import store from './data/store.js';
 
 const tableLocation = document.getElementById('cart-table');
 const totalLocation = document.getElementById('total');
+
+store.pullFromProducts();
 
 function placeDataInTable(cart) {
     for(let i = 0; i < cart.length; i++) {

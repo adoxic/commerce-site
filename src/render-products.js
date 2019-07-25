@@ -1,5 +1,6 @@
 import { getProducts } from './register.js';
 import { lineTotes } from './register.js';
+import store from './data/store.js';
 
 export default function rendersProducts(product) {
     const li = document.createElement('li');
@@ -23,10 +24,14 @@ export default function rendersProducts(product) {
     const priceTextNode = document.createTextNode(usd);
     p.appendChild(priceTextNode);
 
-    const button = document.createElement('button');
-    button.textContent = 'Add';
-    button.value = product.code;
-    p.appendChild(button); 
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    addButton.value = product.code;
+    addEventListener('click', () => {
+        store.placeProductInCart(product.code);
+        console.log(product.code);
+    });
+    p.appendChild(addButton); 
 
     return li;
 }

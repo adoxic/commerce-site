@@ -1,5 +1,5 @@
-import products from './data/products.js';
 import rendersProducts from './render-products.js';
+import store from './data/store.js';
 
 const list = document.getElementById('product');
 const showAll = document.getElementById('all');
@@ -7,14 +7,15 @@ const bathBomb = document.getElementById('bath-bomb');
 const soap = document.getElementById('soap');
 const sets = document.getElementById('sets');
 
+const localData = store.pullFromProducts();
 
 showAll.addEventListener('click', () => {
     while(list.firstChild) {
         list.removeChild(list.firstChild);
     }
       
-    for(let i = 0; i < products.length; i++) {
-        const banana = products[i];
+    for(let i = 0; i < localData.length; i++) {
+        const banana = localData[i];
         const dom = rendersProducts(banana);
         list.appendChild(dom);     
         
@@ -36,8 +37,8 @@ bathBomb.addEventListener('click', () => {
     while(list.firstChild) {
         list.removeChild(list.firstChild);
     }
-    for(let i = 0; i < products.length; i++) {
-        const banana = products[i];
+    for(let i = 0; i < localData.length; i++) {
+        const banana = localData[i];
         if(banana.category === 'bath bomb') {
             const dom = rendersProducts(banana);
             list.appendChild(dom);    
@@ -51,8 +52,8 @@ sets.addEventListener('click', () => {
         list.removeChild(list.firstChild);
     }
 
-    for(let i = 0; i < products.length; i++) {
-        const banana = products[i];
+    for(let i = 0; i < localData.length; i++) {
+        const banana = localData[i];
         if(banana.category === 'soap set') {
             const dom = rendersProducts(banana);
             list.appendChild(dom);    
@@ -62,8 +63,8 @@ sets.addEventListener('click', () => {
 });
 
 function newFunction(category) {
-    for(let i = 0; i < products.length; i++) {
-        const banana = products[i];
+    for(let i = 0; i < localData.length; i++) {
+        const banana = localData[i];
         if(banana.category === category) {
             const dom = rendersProducts(banana);
             list.appendChild(dom);
