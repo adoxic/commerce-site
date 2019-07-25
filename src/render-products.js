@@ -1,4 +1,7 @@
-function rendersProducts(product) {
+import { lineTotes } from './register.js';
+import store from './data/store.js';
+
+export default function rendersProducts(product) {
     const li = document.createElement('li');
     li.className = product.category;
     li.title = product.description;
@@ -20,12 +23,35 @@ function rendersProducts(product) {
     const priceTextNode = document.createTextNode(usd);
     p.appendChild(priceTextNode);
 
-    const button = document.createElement('button');
-    button.textContent = 'Add';
-    button.value = product.code;
-    p.appendChild(button); 
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    addButton.value = product.code;
+    addButton.addEventListener('click', () => {
+        store.placeProductInCart(product.code);
+    });
+    p.appendChild(addButton); 
 
     return li;
 }
 
-export default rendersProducts;
+export function rendersCart(cart, objects) {
+    const tr = document.createElement('tr');
+    
+    const productName = document.createElement('td');
+    productName.textContent = cart.code;
+    tr.appendChild(productName);
+    
+    const quantity = document.createElement('td');
+    quantity.textContent = cart.quantity;
+    tr.appendChild(quantity);
+    
+    const total = document.createElement('td');
+    let objectFromProductArray = store.getProducts(objects, cart.code);
+ 
+    const outValue = lineTotes(objectFromProductArray.price, cart.quantity);
+    total.textContent = outValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    tr.appendChild(total);
+    
+
+    return tr;
+}
