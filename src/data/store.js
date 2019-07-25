@@ -1,6 +1,4 @@
 import products from './products.js';
-import order from './order.js';
-import { getProducts } from '../register.js';
 
 const store = {
     storage: window.localStorage,
@@ -31,7 +29,7 @@ const store = {
     },
     placeProductInCart(code) {
         const shopping = store.pullShoppingCart();
-        let checkIfInCartMakingObjet = getProducts(shopping, code);
+        let checkIfInCartMakingObjet = store.getProducts(shopping, code);
         
         if(checkIfInCartMakingObjet) {
             
@@ -48,10 +46,19 @@ const store = {
     },
     getItem(code) {
         let returned = store.pullFromProducts();
-        let objectFromProductArray = getProducts(returned, code);        console.log(objectFromProductArray);
+        let objectFromProductArray = store.getProducts(returned, code); 
         store.save('object-key', objectFromProductArray);
         return objectFromProductArray;
-    }
+    },
+    getProducts(products, code) {
+        for(let i = 0; i < products.length; i++) {
+            const product = products[i];
+            if(product.code === code) {
+                return product;
+            }
+        }
+        return null;
+    } 
 };  
 
 

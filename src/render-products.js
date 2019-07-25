@@ -1,4 +1,3 @@
-import { getProducts } from './register.js';
 import { lineTotes } from './register.js';
 import store from './data/store.js';
 
@@ -27,9 +26,8 @@ export default function rendersProducts(product) {
     const addButton = document.createElement('button');
     addButton.textContent = 'Add';
     addButton.value = product.code;
-    addEventListener('click', () => {
+    addButton.addEventListener('click', () => {
         store.placeProductInCart(product.code);
-        console.log(product.code);
     });
     p.appendChild(addButton); 
 
@@ -48,7 +46,7 @@ export function rendersCart(cart, objects) {
     tr.appendChild(quantity);
     
     const total = document.createElement('td');
-    let apple = getProducts(objects, cart.code);
+    let apple = store.getProducts(objects, cart.code);
  
     const outValue = lineTotes(apple.price, cart.quantity);
     total.textContent = outValue.toLocaleString('en-US', { style: 'currency', currency: 'USD' });

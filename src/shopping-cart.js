@@ -1,4 +1,3 @@
-import order from './data/order.js';
 import { rendersCart } from './render-products.js';
 import makesTotal from './register.js';
 import products from './data/products.js';
@@ -7,7 +6,7 @@ import store from './data/store.js';
 const tableLocation = document.getElementById('cart-table');
 const totalLocation = document.getElementById('total');
 
-store.pullFromProducts();
+const thingy = store.pullShoppingCart();
 
 function placeDataInTable(cart) {
     for(let i = 0; i < cart.length; i++) {
@@ -23,8 +22,8 @@ function placeTotalInTable(order, products) {
     makeTd.textContent = total.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     totalLocation.appendChild(makeTd);
 }
-placeTotalInTable(order, products);
-placeDataInTable(order);
+placeTotalInTable(thingy, products);
+placeDataInTable(thingy);
 
 
 
