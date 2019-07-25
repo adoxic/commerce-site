@@ -1,7 +1,7 @@
 import products from '../src/data/products.js';
-import { getProducts } from '../src/register.js';
 import { lineTotes } from '../src/register.js';
 import makesTotal from '../src/register.js';
+import store from '../src/data/store.js';
 
 const test = QUnit.test;
 
@@ -20,7 +20,7 @@ test('find product', assert => {
         cost: 0.25,
     };
     // act
-    const foundProduct = getProducts(products, code);
+    const foundProduct = store.getProducts(products, code);
     // assert
     assert.deepEqual(foundProduct, expected);
 });
