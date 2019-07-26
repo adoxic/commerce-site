@@ -58,7 +58,12 @@ const store = {
             }
         }
         return null;
-    } 
+    },
+    addProduct(product) {
+        const products = store.pullFromProducts();
+        products.push(product);
+        store.save('productsList', products); 
+    }
 };  
 
 

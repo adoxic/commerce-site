@@ -1,0 +1,13 @@
+html {
+    background-color: beige;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
