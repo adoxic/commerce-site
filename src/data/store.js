@@ -17,7 +17,7 @@ const store = {
             store.save('productsList', products);
             returnedProducts = products;
         }
-        return products;
+        return returnedProducts;
 
     },
     pullShoppingCart() {

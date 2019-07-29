@@ -25,11 +25,10 @@ test('sent and received test', assert => {
 
 test('sending an array and bootstrap', assert => {
     
-
-    const returnedObject = store.pullFromProducts();
+    const returnedArray = store.pullFromProducts();
     const expected = products;
     
-    assert.equal(returnedObject, expected);
+    assert.equal(returnedArray, expected);
 });  
 
 test('check that array is empty', assert => {

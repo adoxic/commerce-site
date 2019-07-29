@@ -38,9 +38,9 @@ bathBomb.addEventListener('click', () => {
         list.removeChild(list.firstChild);
     }
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === 'bath bomb') {
-            const dom = rendersProducts(banana);
+        const localObject = localData[i];
+        if(localObject.category === 'bath bomb') {
+            const dom = rendersProducts(localObject);
             list.appendChild(dom);    
         }
         
@@ -53,9 +53,9 @@ sets.addEventListener('click', () => {
     }
 
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === 'soap set') {
-            const dom = rendersProducts(banana);
+        const localObject = localData[i];
+        if(localObject.category === 'soap set') {
+            const dom = rendersProducts(localObject);
             list.appendChild(dom);    
         }
         
@@ -64,9 +64,9 @@ sets.addEventListener('click', () => {
 
 function newFunction(category) {
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === category) {
-            const dom = rendersProducts(banana);
+        const localObject = localData[i];
+        if(localObject.category === category) {
+            const dom = rendersProducts(localObject);
             list.appendChild(dom);
         }
     }
