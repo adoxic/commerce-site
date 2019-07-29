@@ -9,65 +9,55 @@ const sets = document.getElementById('sets');
 
 const localData = store.pullFromProducts();
 
+
+
+
 showAll.addEventListener('click', () => {
-    while(list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-      
-    for(let i = 0; i < localData.length; i++) {
-        const objectFromData = localData[i];
-        const dom = rendersProducts(objectFromData);
-        list.appendChild(dom);     
-        
-    }  
+    clearPage();
+    renderAll();  
 });
 
 
 soap.addEventListener('click', () => {  
-    while(list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-    const category = 'soap';
-    newFunction(category);  
+    clearPage();
+    ifCategoryRender('soap');  
 });
 
 
 
 bathBomb.addEventListener('click', () => {   
-    while(list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-    for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === 'bath bomb') {
-            const dom = rendersProducts(banana);
-            list.appendChild(dom);    
-        }
-        
-    }  
+    clearPage();
+    ifCategoryRender('bath bomb');
 });
 
 sets.addEventListener('click', () => {  
+    clearPage();
+
+    ifCategoryRender('soap sets'); 
+});
+
+function clearPage() {
     while(list.firstChild) {
         list.removeChild(list.firstChild);
     }
+}
 
+function renderAll() {
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === 'soap set') {
-            const dom = rendersProducts(banana);
-            list.appendChild(dom);    
-        }
-        
-    }  
-});
+        const objectFromData = localData[i];
+        const dom = rendersProducts(objectFromData);
+        list.appendChild(dom);
+    }
+}
 
-function newFunction(category) {
+function ifCategoryRender(type) {
     for(let i = 0; i < localData.length; i++) {
-        const banana = localData[i];
-        if(banana.category === category) {
-            const dom = rendersProducts(banana);
+        const localProduct = localData[i];
+       
+        if(localProduct.category === type) {
+            const dom = rendersProducts(localProduct);
             list.appendChild(dom);
         }
+        
     }
 }

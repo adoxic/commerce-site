@@ -12,13 +12,13 @@ const store = {
         return item;
     },
     pullFromProducts() {
-        let returnedProducts = store.get(products);
-        if(!returnedProducts) {
+        let productList = store.get('productsList');
+        console.log(productList);
+        if(!productList) {
             store.save('productsList', products);
-            returnedProducts = products;
+            productList = products;
         }
-        return products;
-
+        return productList;
     },
     pullShoppingCart() {
         let shoppingCart = store.get('shopping-key');
@@ -50,10 +50,10 @@ const store = {
         store.save('object-key', objectFromProductArray);
         return objectFromProductArray;
     },
-    getProducts(products, code) {
-        for(let i = 0; i < products.length; i++) {
-            const product = products[i];
-            if(product.code === code) {
+    getProducts(arrayList, code) {
+        for(let i = 0; i < arrayList.length; i++) {
+            const product = arrayList[i];
+            if(arrayList.code === code) {
                 return product;
             }
         }

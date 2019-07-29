@@ -25,11 +25,11 @@ test('sent and received test', assert => {
 
 test('sending an array and bootstrap', assert => {
     
-
+    store.pullFromProducts();
     const returnedObject = store.pullFromProducts();
     const expected = products;
     
-    assert.equal(returnedObject, expected);
+    assert.deepEqual(returnedObject, expected);
 });  
 
 test('check that array is empty', assert => {
@@ -80,7 +80,7 @@ test('put a thing more than one thing in the shopping cart array', assert => {
 
 test('get an object form the array', assert => {
     
-
+    store.pullFromProducts();
     const code = 'Bath Bomb Pink';
     
     const expected = 
@@ -93,10 +93,31 @@ test('get an object form the array', assert => {
             price: 6.00,
             cost: 0.25,
         };
-    
-    
-    
     const shoppingCart = store.getItem(code);
 
     assert.deepEqual(shoppingCart, expected);
+}); 
+
+test('add new product from form', assert => {
+    
+
+    const expected = {
+        code: 'Bath Bomb Gold',
+        name: 'Gold Bomb',
+        image: 'assets/bathbomb-gold.jpg',
+        description: 'Lovely amber, with gold',
+        category: 'bath bomb',
+        price: 6.00,
+        cost: 0.25,
+    };
+
+    store.pullFromProducts();
+    
+    store.addProduct(expected);
+
+    const lastItem = store.get('productsList');
+    
+    const addedObject = lastItem.slice(-1);
+
+    assert.deepEqual(addedObject[0], expected);
 }); 
