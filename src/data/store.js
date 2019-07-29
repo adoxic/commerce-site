@@ -12,7 +12,7 @@ const store = {
         return item;
     },
     pullFromProducts() {
-        let returnedProducts = store.get(products);
+        let returnedProducts = store.get('productsList');
         if(!returnedProducts) {
             store.save('productsList', products);
             returnedProducts = products;

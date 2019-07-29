@@ -99,3 +99,29 @@ test('get an object form the array', assert => {
 
     assert.deepEqual(shoppingCart, expected);
 }); 
+
+test('add new product from form', assert => {
+
+
+    const expected = {
+        code: 'Bath Bomb Gold',
+        name: 'Gold Bomb',
+        image: 'assets/bathbomb-gold.jpg',
+        description: 'Lovely amber, with gold',
+        category: 'bath bomb',
+        price: 6.00,
+        cost: 0.25,
+    };
+
+    store.pullFromProducts();
+
+    store.addProduct(expected);
+
+    const lastItem = store.get('productsList');
+
+    const shoppingCart = store.getItem('Bath Bomb Gold');
+    const addedObject = lastItem.slice(-1);
+
+    assert.deepEqual(shoppingCart, expected);
+    assert.deepEqual(addedObject[0], expected);
+});
