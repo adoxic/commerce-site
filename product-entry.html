@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add New Products</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/form.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./cart.html">Cart</a>
+            <a href="./product-entry.html">Add Product</a>
+            <a href="./products.html">Shop</a>
+        </nav>
+    </header>
+    
+    <form id="product-form">
+        <label for="code">code:</label>  
+        <input id="code" name="code" type="text">
+
+        <label for="name">name:</label> 
+        <input id="name" name="name" type="text">
+
+        <label for="image">image:</label> 
+        <input id="image" name="image" type="text">
+
+        <label for="description">description:</label> 
+        <input id="description" name="description" type="text">
+
+        <label for="category">category:</label> 
+        <select name="category" id="category">
+            <option value=" ">Pick a Category</option>
+            <option value="bath bomb">Bath Bomb</option>
+            <option value="soap">Soap</option>
+            <option value="soap sets">Soap Set</option>
+        </select>
+
+        <label for="price">price:</label>  
+        <input id="price" type="number" name="price" step=".01">
+
+        <label for="cost">cost:</label>  
+        <input id="cost" type="number" name="cost" step=".01">
+
+        <input type="submit">
+    </form>
+
+</body>
+<script src="./src/product-entry.js" type="module"></script>
+</html>
